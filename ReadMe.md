@@ -36,11 +36,13 @@
 3. **使用AI功能**
    - 在左側面板下方填寫API設定
    > 以 [Mistral AI](https://docs.mistral.ai/getting-started/quickstart/) 為例：
-   \`\`\`
+
+   ```
    API端點: https://api.mistral.ai 
    API金鑰: YOUR_API_KEY
    模型名稱: mistral-7b-instruct
-   \`\`\`
+   ```
+   
    - 點擊「應用設定」保存
    - 輸入提示詞後點擊「生成內容」
    - 生成的內容會自動插入到編輯器
