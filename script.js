@@ -889,7 +889,12 @@ async function generateAiContent(prompt) {
             apiPath = '/v1/chat/completions';
         } else if (aiApiEndpoint.includes('mistral.ai')) {
             apiPath = '/v1/chat/completions';
-        } else if (!aiApiEndpoint.endsWith('/v1')) {
+        } else if (aiApiEndpoint.includes('anthropic.com')) {
+            apiPath = '/v1/complete';
+        } else if (aiApiEndpoint.includes('googleapis.com')) {
+            apiPath = '/v1beta/openai/chat/completions';
+        } 
+        else if (!aiApiEndpoint.endsWith('/v1')) {
             // 如果端點不以/v1結尾，則添加/v1
             if (!aiApiEndpoint.endsWith('/')) {
                 aiApiEndpoint += '/';
