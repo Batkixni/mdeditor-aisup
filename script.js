@@ -814,11 +814,31 @@ async function generateAiContent(prompt) {
         // 解析響應數據
         const data = await response.json();
         
-        // 提取生成的內容
-        const generatedContent = data.choices[0]?.message?.content || '';
-        
+        // Check for API-specific error structure in the response body (even with HTTP 200 OK)
+        if (data.error && data.error.message) {
+            throw new Error(`API錯誤: ${data.error.message}${data.error.type ? ' (類型: ' + data.error.type + ')' : ''}`);
+        }
+
+        // Standard OpenAI/Mistral-like response structure
+        const generatedContent = data.choices?.[0]?.message?.content;
+
         if (!generatedContent) {
-            throw new Error('API返回的內容為空');
+            let specificError = 'API返回的內容為空或結構不符期望';
+            if (data.choices === undefined) {
+                specificError = 'API回應中缺少 "choices" 欄位';
+            } else if (!Array.isArray(data.choices)) {
+                specificError = 'API回應中 "choices" 欄位不是一個陣列';
+            } else if (data.choices.length === 0) {
+                specificError = 'API回應中 "choices" 陣列為空';
+            } else if (data.choices[0].message === undefined) {
+                specificError = 'API回應的 "choices" 首個元素中缺少 "message" 欄位';
+            } else if (data.choices[0].message.content === undefined) {
+                specificError = 'API回應的 "choices" 首個元素中 "message" 物件缺少 "content" 欄位';
+            }
+            // You can add more specific checks here based on expected response structures
+            // For example, log the actual data structure for debugging if it's unexpected
+            console.error('Unexpected API response structure:', data);
+            throw new Error(specificError);
         }
         
         return generatedContent;

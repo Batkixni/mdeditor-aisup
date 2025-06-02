@@ -227,6 +227,12 @@ body {
     }
 }
 
+/* Ensure toasts are visible above other elements and have some margin */
+.toast.toast-top {
+  z-index: 9999 !important; /* Use !important to override potential DaisyUI inline styles or less specific rules */
+  margin-top: 1.5rem; /* Add some space from the top edge */
+}
+
 /* 主題切換動畫 */
 [data-theme] {
     transition: background-color 0.3s ease, color 0.3s ease;
