@@ -220,6 +220,66 @@ body {
     to { opacity: 1; }
 }
 
+/* AI生成按鈕動畫 */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(59, 130, 246, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+    }
+}
+
+.btn.loading {
+    animation: spin 1s linear infinite;
+}
+
+#generate-ai-content-btn.loading {
+    animation:
+        spin 1.5s linear infinite,
+        pulse 2s ease-in-out infinite,
+        glow 2s ease-in-out infinite;
+}
+
+#generate-ai-content-btn.loading i {
+    animation: spin 1.5s linear infinite reverse;
+}
+
+/* 添加按鈕懸停效果 */
+#generate-ai-content-btn:not(.loading):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 添加按鈕點擊效果 */
+#generate-ai-content-btn:not(.loading):active {
+    transform: translateY(1px);
+}
+
 /* 響應式調整 */
 @media (max-width: 768px) {
     .drawer-content {
