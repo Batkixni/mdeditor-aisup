@@ -18,7 +18,7 @@
    - 需要設定API端點、API金鑰和模型名稱
    - 設定完成後可以輸入提示詞生成內容
    - 生成的內容會自動插入到編輯器中
-   - 可以連線到各種OpenAI API服務，如[OpenAI](https://platform.openai.com/docs/api-reference/introduction)、[Gemini](https://ai.google.dev/gemini-api/docs/openai)、、[Claude](https://docs.anthropic.com/zh-TW/api/openai-sdk)、[Mistral](https://docs.mistral.ai/getting-started/quickstart/)等
+   - 可以連線到各種OpenAI API服務，如[OpenAI](https://platform.openai.com/docs/api-reference/introduction)、[Gemini](https://ai.google.dev/gemini-api/docs/openai)、[Claude](https://docs.anthropic.com/zh-TW/api/openai-sdk)、[Mistral](https://docs.mistral.ai/getting-started/quickstart/)等
    - 可以使用各種不同的模型，詳情參照各AI模型提供商的官方文檔 (例: [Gemini](https://ai.google.dev/gemini-api/docs/models)、[Mistral](https://docs.mistral.ai/getting-started/models/models_overview/))
 
 ### 基本使用教學
