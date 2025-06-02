@@ -885,17 +885,8 @@ async function generateAiContent(prompt) {
         let apiPath = '/chat/completions';
         
         // 檢查是否為OpenAI兼容API
-        if (aiApiEndpoint.includes('openai.com')) {
-            apiPath = '/v1/chat/completions';
-        } else if (aiApiEndpoint.includes('mistral.ai')) {
-            apiPath = '/v1/chat/completions';
-        } else if (aiApiEndpoint.includes('anthropic.com')) {
-            apiPath = '/v1/complete';
-        } else if (aiApiEndpoint.includes('googleapis.com')) {
-            apiPath = '/v1beta/openai/chat/completions';
-        } 
-        else if (!aiApiEndpoint.endsWith('/v1')) {
-            // 如果端點不以/v1結尾，則添加/v1
+        if (!aiApiEndpoint.includes('/v1')) {
+            // 如果端點不包含/v1，則添加/v1
             if (!aiApiEndpoint.endsWith('/')) {
                 aiApiEndpoint += '/';
             }
